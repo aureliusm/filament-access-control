@@ -14,6 +14,7 @@ use Chiiya\FilamentAccessControl\Resources\FilamentUserResource\Pages\ViewFilame
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Section;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
@@ -34,11 +35,11 @@ class FilamentUserResource extends Resource
     {
         return $form
             ->schema(
-                Filament\Forms\Components\Select::make('region_id')
+                Select::make('region_id')
                     ->relationship('region', 'title')
                     ->label('Regija')
                     ->createOptionForm([
-                        Filament\Forms\Components\TextInput::make('title')
+                        TextInput::make('title')
                             ->required(),
                     ]),
                 Grid::make()
