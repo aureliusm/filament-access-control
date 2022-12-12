@@ -18,6 +18,8 @@ use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Traits\HasRoles;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use App\Models\Region;
 
 /**
  * Chiiya\FilamentAccessControl\Models\FilamentUser.
@@ -27,6 +29,7 @@ use Spatie\Permission\Traits\HasRoles;
  * @property string $password
  * @property null|string $first_name
  * @property null|string $last_name
+ * @property null|int $region_id
  * @property null|\Illuminate\Support\Carbon $expires_at
  * @property null|string $two_factor_code
  * @property null|\Illuminate\Support\Carbon $two_factor_expires_at
@@ -67,6 +70,7 @@ class FilamentUser extends Authenticatable implements FilamentUserInterface, Has
         'password',
         'first_name',
         'last_name',
+        'region_id',
         'expires_at',
         'two_factor_code',
         'two_factor_expires_at',
@@ -164,5 +168,10 @@ class FilamentUser extends Authenticatable implements FilamentUserInterface, Has
     public function twoFactorCodeIsExpired(): bool
     {
         return $this->two_factor_expires_at instanceof Carbon && now()->gt($this->two_factor_expires_at);
+    }
+
+    public function region(): BelongsTo
+    {
+        return $this->belongsTo(Region::class);
     }
 }
