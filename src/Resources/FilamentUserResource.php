@@ -35,13 +35,6 @@ class FilamentUserResource extends Resource
     {
         return $form
             ->schema(
-                Select::make('region_id')
-                    ->relationship('region', 'title')
-                    ->label('Regija')
-                    ->createOptionForm([
-                        TextInput::make('title')
-                            ->required(),
-                    ]),
                 Grid::make()
                     ->schema(
                         fn (Component $livewire) => $livewire instanceof ViewFilamentUser
@@ -168,6 +161,13 @@ class FilamentUserResource extends Resource
                     ->label(__('filament-access-control::default.fields.last_name'))
                     ->validationAttribute(__('filament-access-control::default.fields.last_name'))
                     ->required(),
+                Select::make('region_id')
+                    ->relationship('region', 'title')
+                    ->label('Regija')
+                    ->createOptionForm([
+                        TextInput::make('title')
+                            ->required(),
+                    ]),
                 TextInput::make('email')
                     ->label(__('filament-access-control::default.fields.email'))
                     ->validationAttribute(__('filament-access-control::default.fields.email'))
