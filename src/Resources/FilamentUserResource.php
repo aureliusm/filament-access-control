@@ -34,6 +34,13 @@ class FilamentUserResource extends Resource
     {
         return $form
             ->schema(
+                Filament\Forms\Components\Select::make('region_id')
+                    ->relationship('region', 'title')
+                    ->label('Regija')
+                    ->createOptionForm([
+                        Filament\Forms\Components\TextInput::make('title')
+                            ->required(),
+                    ]),
                 Grid::make()
                     ->schema(
                         fn (Component $livewire) => $livewire instanceof ViewFilamentUser
