@@ -161,9 +161,10 @@ class FilamentUserResource extends Resource
                     ->label(__('filament-access-control::default.fields.last_name'))
                     ->validationAttribute(__('filament-access-control::default.fields.last_name'))
                     ->required(),
-                Select::make('region_id')
-                    ->relationship('region', 'title')
-                    ->label('Regija')
+                Select::make('regions')
+                    ->relationship('regions', 'title')
+                    ->label('Regije')
+                    ->multiple()
                     ->createOptionForm([
                         TextInput::make('title')
                             ->required(),
