@@ -164,6 +164,7 @@ class FilamentUserResource extends Resource
                 Select::make('regions')
                     ->relationship('regions', 'title')
                     ->label('Regije')
+                    ->preload()
                     ->multiple()
                     ->createOptionForm([
                         TextInput::make('title')
