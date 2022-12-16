@@ -125,7 +125,7 @@ class FilamentUserResource extends Resource
             'index' => ListFilamentUsers::route('/'),
             'create' => CreateFilamentUser::route('/create'),
             'edit' => EditFilamentUser::route('/{record}/edit'),
-            'view' => ViewFilamentUser::route('/{record}'),
+//            'view' => ViewFilamentUser::route('/{record}'),
         ];
     }
 
