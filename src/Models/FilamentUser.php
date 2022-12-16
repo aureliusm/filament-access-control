@@ -18,7 +18,7 @@ use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Traits\HasRoles;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use App\Models\Region;
 
 /**
@@ -170,8 +170,8 @@ class FilamentUser extends Authenticatable implements FilamentUserInterface, Has
         return $this->two_factor_expires_at instanceof Carbon && now()->gt($this->two_factor_expires_at);
     }
 
-    public function region(): BelongsTo
+    public function regions(): BelongsToMany
     {
-        return $this->belongsTo(Region::class);
+        return $this->belongsToMany(Region::class);
     }
 }
